@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>地理くいずっ！！</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
+    <style>
+        img {
+            max-width: 200px; /* 画像の最大幅を200pxに設定 */
+        }
+        .container {
+            display: flex;
+            height: 1000px;
+            flex-direction: column;
+        }
+
+        .btn {
+            font-size: 50px; /* フォントサイズを24pxに */
+            padding: 15px 30px; /* パディングを上下15px、左右30pxに */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="images/SAYAME.png">
+        <h1 id="mondai"></h1>
+        <a class="btn btn-primary" href="Primaryquiz3.html" id="btn1"></a>
+        <a class="btn btn-primary" href="Primaryquiz4.html" id="btn2"></a>
+        <a class="btn btn-primary" href="Primaryquiz4.html" id="btn3"></a>
+        <a class="btn btn-primary" href="Primaryquiz4.html" id="btn4"></a>
+      </div>
+
+      <div class="container">
+        <div class="csvlist" id="js-csv"></div>
+      </div>
+
+      <script>
+        async function loadCSVData() {
+        const response = await fetch('Primaryquiz.csv');
+        const text = await response.text();
+        const data = text.trim().split('\n')
+        .map(line => line.split(',').map(x => x.trim()));
+        console.log(data[1]);
+        document.getElementById("mondai").innerText = data[2][2];
+
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach((button, index) => 
+        {
+        button.innerText = data[2][index + 3]; // 3, 4, 5, 6 列目の値を使用
+        });
+
+  const articles = data.slice(1)
+    .map(x => `
+      <article>
+        <p>${x[0]}</p>
+        <p>${x[1]}</p>
+        <p>${x[2]}</p>
+        <p>${x[3]}</p>
+        <p>${x[4]}</p>
+        <p>${x[5]}</p>
+        <p>${x[6]}</p>
+      </article>
+    `)
+    .join('');
+  document.getElementById('js-csv').innerHTML = articles;
+}
+
+loadCSVData();
+      </script>
+</body>

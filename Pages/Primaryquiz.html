@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>地理くいずっ！！</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
+    <style>
+        img {
+            max-width: 1000px; /* 画像の最大幅を200pxに設定 */
+        }
+        .container {
+            display: flex;
+            height: 1000px;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="images/school2.png">
+        <h1>それじゃいくヨ！</h1>
+        <a class="btn btn-primary" href="Primaryquiz2.html">次へ</a>
+    </div>
+
+    <p id="msg">Cookieの読み書きを行います。</p>
+      
+      <script>
+
+        let questionOrderArr = [1, 2, 3, 4, 5];
+        questionOrderArr.sort(() => Math.random() - 0.5);
+        console.log(questionOrderArr);
+
+        document.cookie = 'questionOrderArr=' + questionOrderArr.toString();
+        document.cookie = 'address=Tokyo';
+        let name = encodeURIComponent('田中');
+        document.cookie = 'name=' + name;
+        
+        document.cookie = 'questionNumber=0';
+
+        let e = document.getElementById('msg');
+        e.insertAdjacentHTML('afterend', '<p>' + document.cookie + '</p>');
+      </script>
+</body>
