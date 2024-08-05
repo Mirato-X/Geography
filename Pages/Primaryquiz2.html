@@ -66,10 +66,6 @@
         const data = text.trim().split('\n')
         .map(line => line.split(',').map(x => x.trim()));
         console.log(data[1]);
-        console.log("DebugStart");
-        console.log(data);
-        console.log(questionOrderArr);
-        console.log(questionNumber);
         document.getElementById("mondai").innerText = data[questionOrderArr[questionNumber]][2];
         const buttons = document.querySelectorAll('.btn');
 
