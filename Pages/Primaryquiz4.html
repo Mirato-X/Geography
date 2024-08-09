@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>地理くいずっ！！</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
     <style>
         img {
-            max-width: 1000px; /* 画像の最大幅を200pxに設定 */
+            max-width: 1000px;
         }
         .container {
             display: flex;
@@ -19,29 +19,51 @@
         }
 
         .btn {
-            font-size: 50px; /* フォントサイズを24pxに */
-            padding: 15px 30px; /* パディングを上下15px、左右30pxに */
+            font-size: 50px;
+            padding: 15px 30px;
         }
-
     </style>
 </head>
 
 <body>
     <div class="container">
         <img src="images/SAYAME.png">
-        <h1>残念、不正解だヨ！</h1>
-        <a class="btn btn-primary" href="Primaryquiz2.html">次へ</a>
+        <h1>残念！不正解だヨ...</h1>
+        <div id="nextButton"></div>
     </div>
+
     <script>
+        let questionNumber = 0;
+        let correctAnswers = 0;
+
         const cookiePairs = document.cookie.split('; ');
-        for (let pair of cookiePairs) 
-        {
-         const [key, value] = pair.split('=');
-         if (key === 'questionNumber')
-         {
-          questionNumber = Number(value);
-         }
+        for (let pair of cookiePairs) {
+            const [key, value] = pair.split('=');
+            if (key === 'questionNumber') {
+                questionNumber = Number(value);
+            }
+            if (key === 'correctAnswers') {
+                correctAnswers = Number(value);
+            }
         }
-        document.cookie = 'questionNumber='+String(questionNumber+1);
+
+        questionNumber++;
+
+        document.cookie = 'questionNumber=' + questionNumber;
+        document.cookie = 'correctAnswers=' + correctAnswers;
+
+        const nextButtonDiv = document.getElementById('nextButton');
+
+        if (questionNumber >= 5) {
+            if (correctAnswers >= 3) {
+            　　nextButtonDiv.innerHTML = '<a class="btn btn-primary" href="clear.html">結果発表</a>';
+            } 
+            else {
+            　　nextButtonDiv.innerHTML = '<a class="btn btn-primary" href="failed.html">結果発表</a>';
+       　　 }
+        } else {
+            nextButtonDiv.innerHTML = '<a class="btn btn-primary" href="Primaryquiz2.html">次へ</a>';
+        }
     </script>
 </body>
+</html>
