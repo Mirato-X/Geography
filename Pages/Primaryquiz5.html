@@ -29,6 +29,28 @@
 <body>
     <div class="container">
         <img src="images/SAYAME.png">
-        <h1>x（6≦x≦10）問正解!合格だヨ！！</h1>
+        <h1 id="PrimaryquizClear"></h1>
+        <a class="btn btn-primary" href="Primaryquiz7.html">次へ</a>
       </div>
+
+      <script>
+        let questionNumber = 0;
+        let correctAnswers = 0;
+
+        const cookiePairs = document.cookie.split('; ');
+        for (let pair of cookiePairs) {
+            const [key, value] = pair.split('=');
+            if (key === 'questionNumber') {
+                questionNumber = Number(value);
+            }
+            if (key === 'correctAnswers') {
+                correctAnswers = Number(value);
+            }
+        }
+
+        const primaryquizClear = document.getElementById('PrimaryquizClear');
+        primaryquizClear.innerText=correctAnswers+"問正解！クリア成功だよ！";
+
+
+    </script>
 </body>
