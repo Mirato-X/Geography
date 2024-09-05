@@ -41,6 +41,9 @@
       </div>
 
       <script>
+        function quizRowCalculate(x, y) {
+         return 5 * (x - 1) + y;
+        }
         const cookiePairs = document.cookie.split('; ');// questionOrderArrの値を見つける
         let questionOrderStr = '';
         let questionNumber = 0;
@@ -58,7 +61,16 @@
         }// 文字列を配列に変換
 
         const questionOrderArr = questionOrderStr.split(',').map(Number);
-        console.log("questionOrderArrは")
+        let stageNum = 4;
+        let questionNum = questionOrderArr[questionNumber];
+        let quizRow = quizRowCalculate(stageNum, questionNum);
+        console.log("questionNumberは");
+        console.log(questionNumber);
+        console.log("questionNumは");
+        console.log(questionNum);
+        console.log("quizRowは");
+        console.log(quizRow);
+        console.log("questionOrderArrは");
         console.log(questionOrderArr);
         async function loadCSVData() {
         const response = await fetch('Primaryquiz.csv');
@@ -66,7 +78,7 @@
         const data = text.trim().split('\n')
         .map(line => line.split(',').map(x => x.trim()));
         console.log(data[1]);
-        document.getElementById("mondai").innerText = data[questionOrderArr[questionNumber]][2];
+        document.getElementById("mondai").innerText = data[quizRow][2];
         const buttons = document.querySelectorAll('.btn');
 
         let arr = [3, 4, 5, 6];
@@ -75,7 +87,7 @@
 
         buttons.forEach((button, index) => 
         {
-         button.innerText = data[questionOrderArr[questionNumber]][arr[index]]; 
+         button.innerText = data[quizRow][arr[index]]; 
          if (arr[index] === 3) 
          {
           button.href = "SekaikaramitaJapanL1T.html";
