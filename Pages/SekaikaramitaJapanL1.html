@@ -47,6 +47,7 @@
         const cookiePairs = document.cookie.split('; ');// questionOrderArrの値を見つける
         let questionOrderStr = '';
         let questionNumber = 0;
+        let stageNum = 1;
         for (let pair of cookiePairs) 
         {
          const [key, value] = pair.split('=');
@@ -58,10 +59,14 @@
          {
           questionNumber = Number(value);
          }
+
+         if (key === 'stageValue')
+         {
+          stageNum = Number(value);
+         }
         }// 文字列を配列に変換
 
         const questionOrderArr = questionOrderStr.split(',').map(Number);
-        let stageNum = 4;
         let questionNum = questionOrderArr[questionNumber];
         let quizRow = quizRowCalculate(stageNum, questionNum);
         console.log("questionNumberは");
