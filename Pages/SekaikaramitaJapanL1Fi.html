@@ -30,6 +30,25 @@
     <div class="container">
         <img src="images/SAYAME.png">
         <h1>いいネ！初めてにしてはすごいヨ！</h1>
-        <a class="btn btn-primary" href="Primaryquiz8.html">次へ</a>
+        <a class="btn btn-primary" href="select.html">次へ</a>
       </div>
+      <script>
+        const cookiePairs = document.cookie.split('; ');// questionOrderArrの値を見つける
+        let stageUnlock = [];
+        let stageNum = 0;
+        for (let pair of cookiePairs) 
+        {
+         const [key, value] = pair.split('=');
+         if (key === 'stageUnlock')
+         {
+            stageUnlock = value.split(',').map(Number);
+         }
+         if (key === 'stageValue')
+         {
+          stageNum = Number(value);
+         }
+        }
+        stageUnlock[stageNum-2]=1;
+        document.cookie = 'stageUnlock=' + stageUnlock.toString();
+      </script>
 </body>

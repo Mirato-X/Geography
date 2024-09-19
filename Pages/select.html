@@ -28,13 +28,13 @@
 
 <body>
     <div class="container">
-        <a class="btn btn-primary" href="SekaikaramitaJapan.html?stage=2">世界から見た日本</a>
-        <a class="btn btn-primary" href="SekaikaramitaJapan.html?stage=3">北海道・東北</a>
-        <a class="btn btn-primary" href="SekaikaramitaJapan.html?stage=4">関東</a>
-        <a class="btn btn-primary disabled" href="SekaikaramitaJapan.html?stage=5" style="pointer-events: none; opacity: 0.6;">中部</a>
-        <a class="btn btn-primary disabled" href="SekaikaramitaJapan.html?stage=6" style="pointer-events: none; opacity: 0.6;">近畿</a>
-        <a class="btn btn-primary disabled" href="SekaikaramitaJapan.html?stage=7" style="pointer-events: none; opacity: 0.6;">中国・四国</a>
-        <a class="btn btn-primary disabled" href="SekaikaramitaJapan.html?stage=8" style="pointer-events: none; opacity: 0.6;">九州</a>
+        <a id="stage1button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=2">世界から見た日本</a>
+        <a id="stage2button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=3">北海道・東北</a>
+        <a id="stage3button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=4">関東</a>
+        <a id="stage4button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=5">中部</a>
+        <a id="stage5button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=6">近畿</a>
+        <a id="stage6button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=7">中国・四国</a>
+        <a id="stage7button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=8">九州</a>
       </div>
 
       <p id="msg">Cookieの読み書きを行います。</p>
@@ -47,5 +47,24 @@
         
         let e = document.getElementById('msg');
         e.insertAdjacentHTML('afterend', '<p>' + document.cookie + '</p>');
+
+        const cookiePairs = document.cookie.split('; ');// questionOrderArrの値を見つける
+        let stageUnlock = [];
+        for (let pair of cookiePairs) 
+        {
+         const [key, value] = pair.split('=');
+         if (key === 'stageUnlock')
+         {
+            stageUnlock = value.split(',').map(Number);
+         }
+        }
+        console.log("stageUnlockは");
+        console.log(stageUnlock);
+        stageUnlock.forEach((stage, index) => {
+            if(stage==0){
+                let buttonNum=index+2;
+                document.getElementById("stage"+buttonNum+"button").classList.add("disabled");
+            }
+        })
         </script>
 </body>
