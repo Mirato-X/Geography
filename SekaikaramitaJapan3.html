@@ -18,7 +18,41 @@
 <body>
     <div class="container">
         <img src="images/school.png">
-        <h1>改めて、よろしくネ！</h1>
+        <h1 id="message">ここでは、「世界から見た日本」に関するクイズを出していくヨ！</h1>
         <a class="btn btn-primary" href="SekaikaramitaJapan4.html">次へ</a>
       </div>
+      <script>
+        // クッキーからstageValueの値を取得する関数
+        function getCookieValue(name) {
+            const value = document.cookie.split('; ').find(row => row.startsWith(name + '='));
+            return value ? value.split('=')[1] : null;
+        }
+
+        // クッキーからstageValueの値を取得
+        const stageValue = getCookieValue('stageValue');
+        console.log("stageValue = " + stageValue);
+
+        // stageValueに基づいてメッセージを表示
+        if(stageValue === "3"){
+            document.getElementById("message").innerText = "ちょっとずつ形式が分かってきたかナ？";
+        }
+        if(stageValue === "4"){
+            document.getElementById("message").innerText = "今回は東北地方についてのクイズを出していくヨ！";
+        }
+        if(stageValue === "5"){
+            document.getElementById("message").innerText = "今回も東北地方についてのクイズを出していくヨ！";
+        }
+        if(stageValue === "6"){
+            document.getElementById("message").innerText = "今回は関東地方についてのクイズを出していくヨ！";
+        }
+        if(stageValue === "7"){
+            document.getElementById("message").innerText = "今回も関東地方についてのクイズを出していくヨ！";
+        }
+        if(stageValue === "8"){
+            document.getElementById("message").innerText = "今回も関東地方についてのクイズを出していくヨ！";
+        }
+        if(stageValue === "9"){
+            document.getElementById("message").innerText = "今回も関東地方についてのクイズを出していくヨ！";
+        }
+      </script>
 </body>

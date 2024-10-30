@@ -18,8 +18,8 @@
 <body>
     <div class="container">
         <img src="images/school.png">
-        <h1 id="message">ここでは、「世界から見た日本」に関するクイズを出していくヨ！</h1>
-        <a class="btn btn-primary" href="SekaikaramitaJapan2.html">次へ</a>
+        <h1 id="message">担当はわたし、サヤメが担当するヨ！</h1>
+        <a class="btn btn-primary" href="SekaikaramitaJapan3.html">次へ</a>
       </div>
       <script>
         const queryString = window.location.search;
@@ -31,25 +31,16 @@
         const stageValue = params.get('stage');
         console.log("stageValue = " + stageValue);
         if(stageValue==="3"){
-            document.getElementById("message").innerText = "今回は北海道についてのクイズを出していくヨ！";
+            document.getElementById("message").innerText = "ちょっとずつ形式が分かってきたかナ？";
         }
         if(stageValue==="4"){
-            document.getElementById("message").innerText = "今回は東北地方についてのクイズを出していくヨ！";
+            document.getElementById("message").innerText = "東北地方は問題が多いから①と②に分けて出すヨ！";
         }
         if(stageValue==="5"){
             document.getElementById("message").innerText = "今回も東北地方についてのクイズを出していくヨ！";
         }
         if(stageValue==="6"){
-            document.getElementById("message").innerText = "今回は関東地方についてのクイズを出していくヨ！";
-        }
-        if(stageValue==="7"){
-            document.getElementById("message").innerText = "今回も関東地方についてのクイズを出していくヨ！";
-        }
-        if(stageValue==="8"){
-            document.getElementById("message").innerText = "今回も関東地方についてのクイズを出していくヨ！";
-        }
-        if(stageValue==="9"){
-            document.getElementById("message").innerText = "今回も関東地方についてのクイズを出していくヨ！";
+            document.getElementById("message").innerText = "関東地方も問題が多いから①～④に分けて出題するヨ！";
         }
         document.cookie = 'stageValue=' + stageValue;
       </script>
