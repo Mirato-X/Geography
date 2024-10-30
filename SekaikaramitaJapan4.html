@@ -39,5 +39,66 @@
 
         let e = document.getElementById('msg');
         e.insertAdjacentHTML('afterend', '<p>' + document.cookie + '</p>');
+
+        const queryString = window.location.search;
+
+        // URLSearchParamsオブジェクトを作成してクエリ文字列を解析
+        const params = new URLSearchParams(queryString);
+
+        // 特定のパラメータの値を取得
+        const stageValue = params.get('stage');
+        console.log("stageValue = " + stageValue);
+        if(stageValue==="3"){
+            document.getElementById("message").innerText = "ちょっとずつ形式が分かってきたかナ？";
+        }
+        if(stageValue==="4"){
+            document.getElementById("message").innerText = "東北地方はクイズが多いから①と②に分けて出すヨ！";
+        }
+        if(stageValue==="5"){
+            document.getElementById("message").innerText = "難しいクイズも増えてきたけど君なら大丈夫だヨ！";
+        }
+        if(stageValue==="6"){
+            document.getElementById("message").innerText = "日本の首都がある、文化・経済などの中心だネ！";
+        }
+        if(stageValue==="7"){
+            document.getElementById("message").innerText = "関東地方もクイズが多いから①～③に分けて出題するヨ！";
+        }
+        if(stageValue==="8"){
+            document.getElementById("message").innerText = "今回は主に都市で起こる現象などについて出題するヨ！";
+        }
+        if(stageValue==="9"){
+            document.getElementById("message").innerText = "高い山々が立ち並ぶ、いわば日本の屋根だネ！";
+        }
+        if(stageValue==="10"){
+            document.getElementById("message").innerText = "今回は主に、中部地方における産業について出題するヨ！";
+        }
+        if(stageValue==="11"){
+            document.getElementById("message").innerText = "京の都や天下の台所があった、誠の「ジャパン」を学べる地方だネ！";
+        }
+        if(stageValue==="12"){
+            document.getElementById("message").innerText = "簡単なクイズからイジワルなクイズまで、幅広い問題を出していくヨ！";
+        }
+        if(stageValue==="13"){
+            document.getElementById("message").innerText = "中国・四国地方は問題数が多いから、①～④に分けて出していくヨ！";
+        }
+        if(stageValue==="14"){
+            document.getElementById("message").innerText = "中国・四国地方の地形や産業についてのクイズが多めかナ～";
+        }
+        if(stageValue==="15"){
+            document.getElementById("message").innerText = "本州四国連絡橋についてしっかり理解できていれば余裕だヨ！";
+        }
+        if(stageValue==="16"){
+            document.getElementById("message").innerText = "最後は中国・四国地方の気候や地形についてのクイズだヨ！";
+        }
+        if(stageValue==="17"){
+            document.getElementById("message").innerText = "最初は基礎的な問題が多いから、間違えないようにネ！";
+        }
+        if(stageValue==="18"){
+            document.getElementById("message").innerText = "今回は沖縄県のクイズを出していくヨ！";
+        }
+        if(stageValue==="19"){
+            document.getElementById("message").innerText = "いよいよ日本地理も終盤近くだヨ！頑張っテ！";
+        }
+        document.cookie = 'stageValue=' + stageValue;
       </script>
 </body>
