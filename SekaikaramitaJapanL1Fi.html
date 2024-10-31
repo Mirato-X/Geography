@@ -29,7 +29,7 @@
 <body>
     <div class="container">
         <img src="images/SAYAME.png">
-        <h1>いいネ！初めてにしてはすごいヨ！</h1>
+        <h1 id="message">いいネ！初めてにしてはすごいヨ！</h1>
         <a class="btn btn-primary" href="select.html">次へ</a>
       </div>
       <script>
@@ -50,5 +50,67 @@
         }
         stageUnlock[stageNum-2]=1;
         document.cookie = 'stageUnlock=' + stageUnlock.toString();
+
+        function getCookieValue(name) {
+            const value = document.cookie.split('; ').find(row => row.startsWith(name + '='));
+            return value ? value.split('=')[1] : null;
+        }
+
+        // クッキーからstageValueの値を取得
+        const stageValue = getCookieValue('stageValue');
+        console.log("stageValue = " + stageValue);
+
+        // stageValueに基づいてメッセージを表示
+        if(stageValue==="3"){
+            document.getElementById("message").innerText = "うんうん、いい感じだヨ！";
+        }
+        if(stageValue==="4"){
+            document.getElementById("message").innerText = "この調子で頑張ってネ！";
+        }
+        if(stageValue==="5"){
+            document.getElementById("message").innerText = "だんだんと覚えてきたかナ？！";
+        }
+        if(stageValue==="6"){
+            document.getElementById("message").innerText = "この先も長いけど頑張っていこうネ！";
+        }
+        if(stageValue==="7"){
+            document.getElementById("message").innerText = "関東地方も半分を過ぎたヨ、いいネ！";
+        }
+        if(stageValue==="8"){
+            document.getElementById("message").innerText = "覚えたところこそ何度も復習するといいかもヨ！";
+        }
+        if(stageValue==="9"){
+            document.getElementById("message").innerText = "いい感じに進んでいるネ！";
+        }
+        if(stageValue==="10"){
+            document.getElementById("message").innerText = "産業や文化について知ると、日本のカタチが見えてくるヨ！";
+        }
+        if(stageValue==="11"){
+            document.getElementById("message").innerText = "関係ある事柄は結び付けて覚えると、思い出す材料にもなっていいヨ！";
+        }
+        if(stageValue==="12"){
+            document.getElementById("message").innerText = "いいネ！楽勝楽勝かナ？";
+        }
+        if(stageValue==="13"){
+            document.getElementById("message").innerText = "覚えることも増えてきて大変だけど、頭をフル回転させて頑張っテ！";
+        }
+        if(stageValue==="14"){
+            document.getElementById("message").innerText = "どんどん進んじゃおうカ！";
+        }
+        if(stageValue==="15"){
+            document.getElementById("message").innerText = "一見使わなそうな知識が、周りとの差をつける材料にもなるかもネ！";
+        }
+        if(stageValue==="16"){
+            document.getElementById("message").innerText = "地形や気候について覚えると、そこの産業や暮らしも見えてくるネ！";
+        }
+        if(stageValue==="17"){
+            document.getElementById("message").innerText = "いよいよ最後の地方、頑張って駆け抜けてネ！";
+        }
+        if(stageValue==="18"){
+            document.getElementById("message").innerText = "次でいよいよラスト、覚えた知識を身に着けながら進んでね！";
+        }
+        if(stageValue==="19"){
+            document.getElementById("message").innerText = "おめでとう、最後までよく頑張ったネ！今後アップデートで新たなステージが追加されるかも？";
+        }
       </script>
 </body>
