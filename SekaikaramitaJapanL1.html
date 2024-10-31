@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
     <style>
         img {
-            max-width: 200px; /* 画像の最大幅を200pxに設定 */
+            max-width: 1000px;
         }
         .container {
             display: flex;
@@ -19,10 +19,9 @@
         }
 
         .btn {
-            font-size: 50px; /* フォントサイズを24pxに /
-            padding: 15px 30px; / パディングを上下15px、左右30pxに */
+            font-size: 50px;
+            padding: 15px 30px;
         }
-
     </style>
 </head>
 
@@ -36,89 +35,75 @@
         <a class="btn btn-primary" href="Primaryquiz4.html" id="btn4">愛知県</a>
     </div>
 
-      <div class="container">
+    <div class="container">
         <div class="csvlist" id="js-csv"></div>
-      </div>
+    </div>
 
-      <script>
+    <script>
         function quizRowCalculate(x, y) {
-         return 5 * (x - 1) + y;
+            return 5 * (x - 1) + y;
         }
-        const cookiePairs = document.cookie.split('; ');// questionOrderArrの値を見つける
+
+        const cookiePairs = document.cookie.split('; ');
         let questionOrderStr = '';
         let questionNumber = 0;
         let stageNum = 1;
-        for (let pair of cookiePairs) 
-        {
-         const [key, value] = pair.split('=');
-         if (key === 'questionOrderArr')
-         {
-          questionOrderStr = value;
-         }
-         if (key === 'questionNumber')
-         {
-          questionNumber = Number(value);
-         }
 
-         if (key === 'stageValue')
-         {
-          stageNum = Number(value);
-         }
-        }// 文字列を配列に変換
+        for (let pair of cookiePairs) {
+            const [key, value] = pair.split('=');
+            if (key === 'questionOrderArr') {
+                questionOrderStr = value;
+            }
+            if (key === 'questionNumber') {
+                questionNumber = Number(value);
+            }
+            if (key === 'stageValue') {
+                stageNum = Number(value);
+            }
+        }
 
         const questionOrderArr = questionOrderStr.split(',').map(Number);
         let questionNum = questionOrderArr[questionNumber];
         let quizRow = quizRowCalculate(stageNum, questionNum);
-        console.log("questionNumberは");
-        console.log(questionNumber);
-        console.log("questionNumは");
-        console.log(questionNum);
-        console.log("quizRowは");
-        console.log(quizRow);
-        console.log("questionOrderArrは");
-        console.log(questionOrderArr);
+
         async function loadCSVData() {
-        const response = await fetch('Primaryquiz.csv');
-        const text = await response.text();
-        const data = text.trim().split('\n')
-        .map(line => line.split(',').map(x => x.trim()));
-        console.log(data[1]);
-        document.getElementById("mondai").innerText = data[quizRow][2];
-        const buttons = document.querySelectorAll('.btn');
+            const response = await fetch('Primaryquiz.csv');
+            const text = await response.text();
+            const data = text.trim().split('\n')
+            .map(line => line.split(',').map(x => x.trim()));
 
-        let arr = [3, 4, 5, 6];
-        arr.sort(() => Math.random() - 0.5);
-        console.log(arr);
+            document.getElementById("mondai").innerText = data[quizRow][2];
+            const buttons = document.querySelectorAll('.btn');
 
-        buttons.forEach((button, index) => 
-        {
-         button.innerText = data[quizRow][arr[index]]; 
-         if (arr[index] === 3) 
-         {
-          button.href = "SekaikaramitaJapanL1T.html";
-         } 
-         else 
-         {
-          button.href = "SekaikaramitaJapanL1F.html";
-         }
-        });
+            let arr = [3, 4, 5, 6];
+            arr.sort(() => Math.random() - 0.5);
 
-        const articles = data.slice(1)
-    .map(x =>
-    `<article>
-        <p>${x[0]}</p>
-        <p>${x[1]}</p>
-        <p>${x[2]}</p>
-        <p>${x[3]}</p>
-        <p>${x[4]}</p>
-        <p>${x[5]}</p>
-        <p>${x[6]}</p>
-    </article>`
-    )
-    .join('');
-  document.getElementById('js-csv').innerHTML = articles;
-}
+            buttons.forEach((button, index) => {
+                button.innerText = data[quizRow][arr[index]]; 
+                if (arr[index] === 3) {
+                    button.href = "SekaikaramitaJapanL1T.html";
+                } else {
+                    button.href = "SekaikaramitaJapanL1F.html";
+                }
+            });
 
-loadCSVData();
-      </script>
+            const articles = data.slice(1)
+                .map(x => `
+                    <article>
+                        <p>${x[0]}</p>
+                        <p>${x[1]}</p>
+                        <p>${x[2]}</p>
+                        <p>${x[3]}</p>
+                        <p>${x[4]}</p>
+                        <p>${x[5]}</p>
+                        <p>${x[6]}</p>
+                    </article>
+                `)
+                .join('');
+
+            document.getElementById('js-csv').innerHTML = articles;
+        }
+
+        loadCSVData();
+    </script>
 </body>
