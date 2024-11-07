@@ -13,6 +13,22 @@
             max-width: 100%; /* 画像の最大幅を画面幅に応じて設定 */
         }
 
+        .container {
+            display: flex;
+            height: 100%; /* フレックスで縦スクロールに対応 */
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .btn {
+            font-size: 4vw; /* フォントサイズを画面幅に応じて設定 */
+            padding: 10px 20px; /* パディングを全体で調整 */
+            width: 100%; /* ボタン幅を100%に */
+            max-width: 300px; /* ボタンの最大幅を300pxに制限 */
+            margin: 5px 0;
+        }
+
         /* 画面サイズに応じたスタイル調整 */
         @media (min-width: 768px) {
             .btn {
