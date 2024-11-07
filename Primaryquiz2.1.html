@@ -10,17 +10,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
     <style>
         img {
-            max-width: 200px; /* 画像の最大幅を200pxに設定 */
+            max-width: 100%; /* 画像の最大幅を画面幅に応じて設定 */
         }
+
         .container {
             display: flex;
-            height: 1000px;
+            height: 100%; /* フレックスで縦スクロールに対応 */
             flex-direction: column;
+            align-items: center;
+            padding: 10px;
         }
 
         .btn {
-            font-size: 50px; /* フォントサイズを24pxに */
-            padding: 15px 30px; /* パディングを上下15px、左右30pxに */
+            font-size: 4vw; /* フォントサイズを画面幅に応じて設定 */
+            padding: 10px 20px; /* パディングを全体で調整 */
+            width: 100%; /* ボタン幅を100%に */
+            max-width: 300px; /* ボタンの最大幅を300pxに制限 */
+            margin: 5px 0;
+        }
+
+        /* 画面サイズに応じたスタイル調整 */
+        @media (min-width: 768px) {
+            .btn {
+                font-size: 24px; /* タブレットやPC用のフォントサイズ */
+                padding: 15px 30px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .btn {
+                font-size: 50px; /* PC用のフォントサイズ */
+                padding: 15px 30px;
+            }
         }
 
     </style>

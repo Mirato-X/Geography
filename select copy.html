@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>地理くいずっ！！</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
@@ -48,7 +48,6 @@
                 padding: 15px 30px;
             }
         }
-
     </style>
 </head>
 
@@ -72,12 +71,11 @@
         <a id="stage16button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=17">九州・沖縄①</a>
         <a id="stage17button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=18">九州・沖縄②</a>
         <a id="stage18button" class="btn btn-primary" href="SekaikaramitaJapan.html?stage=19">九州・沖縄③</a>
+    </div>
 
-      </div>
-
-      <p id="msg">Cookieの読み書きを行います。</p>
+    <p id="msg">Cookieの読み書きを行います。</p>
       
-      <script>
+    <script>
         document.cookie = 'old=27';
         document.cookie = 'address=Tokyo';
         let name = encodeURIComponent('田中');
@@ -86,23 +84,23 @@
         let e = document.getElementById('msg');
         e.insertAdjacentHTML('afterend', '<p>' + document.cookie + '</p>');
 
-        const cookiePairs = document.cookie.split('; ');// questionOrderArrの値を見つける
+        const cookiePairs = document.cookie.split('; ');
         let stageUnlock = [];
-        for (let pair of cookiePairs) 
-        {
-         const [key, value] = pair.split('=');
-         if (key === 'stageUnlock')
-         {
-            stageUnlock = value.split(',').map(Number);
-         }
+        for (let pair of cookiePairs) {
+            const [key, value] = pair.split('=');
+            if (key === 'stageUnlock') {
+                stageUnlock = value.split(',').map(Number);
+            }
         }
+        
         console.log("stageUnlockは");
         console.log(stageUnlock);
+        
         stageUnlock.forEach((stage, index) => {
-            if(stage==0){
-                let buttonNum=index+2;
-                document.getElementById("stage"+buttonNum+"button").classList.add("disabled");
+            if (stage == 0) {
+                let buttonNum = index + 2;
+                document.getElementById("stage" + buttonNum + "button").classList.add("disabled");
             }
-        })
-        </script>
+        });
+    </script>
 </body>

@@ -10,7 +10,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
     <style>
         img {
-            max-width: 1000px; /* 画像の最大幅を200pxに設定 */
+            max-width: 100%; /* 画像の最大幅を画面幅に応じて設定 */
+        }
+
+        /* 画面サイズに応じたスタイル調整 */
+        @media (min-width: 768px) {
+            .btn {
+                font-size: 24px; /* タブレットやPC用のフォントサイズ */
+                padding: 15px 30px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .btn {
+                font-size: 50px; /* PC用のフォントサイズ */
+                padding: 15px 30px;
+            }
         }
     </style>
 </head>
